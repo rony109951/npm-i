@@ -3,38 +3,128 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>الرئيسية | الهرم الرابع</title>
+<title>القائمة الرأسية | الهرم الرابع</title>
 <style>
 @import url( https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap );
-
 body {
   margin:0;
-  font-family: Cairo ,sans-serif;
+  font-family:Cairo,sans-serif;
   background:#000;
   color:white;
-  scroll-behavior:smooth;
+  overflow-x:hidden;
 }
-body::before {
-  content:"";
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,0,0,0.2), transparent 70%),
-             radial-gradient(circle at 70% 70%, rgba(255,0,0,0.2), transparent 70%),
-             radial-gradient(circle at 50% 50%, rgba(255,0,0,0.15), transparent 60%);
-  z-index:-1;
-  animation: pulse 6s ease-in-out infinite alternate;
-}
-@keyframes pulse {
-  0%{opacity:0.3; transform:scale(1);}
-  50%{opacity:0.7; transform:scale(1.05);}
-  100%{opacity:0.3; transform:scale(1);}
-}
-
-nav {
+.vertical-menu {
   position:fixed;
   top:0;
-  width:100%;
+  right:0;
+  width:350px;
+  height:100vh;
+  background:#111;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20px;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+  z-index:1000;
+}
+.vertical-menu video {
+  width:300px;
+  height:300px;
+  border-radius:15px;
+  margin-bottom:20px;
+  object-fit:cover;
+}
+.counter-box {
+  background:#222;
+  width:90%;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:15px;
+  text-align:center;
+}
+.counter-box h3 {
+  margin:0 0 10px 0;
+  font-size:1.1rem;
+  color:#ff4d4d;
+}
+.counter-box p {
+  font-size:2rem;
+  margin:0;
+  font-weight:bold;
+}
+.whatsapp-box {
+  margin-top:15px;
+  width:90%;
+  text-align:center;
+}
+.whatsapp-box a {
+  display:block;
+  background:#25D366;
+  color:white;
+  font-weight:bold;
+  padding:12px 0;
+  border-radius:10px;
+  text-decoration:none;
+  transition:0.3s;
+}
+.whatsapp-box a:hover {
+  background:#1ebe5d;
+}
+.developer-text {
+  margin-top:20px;
+  font-size:1rem;
+  line-height:1.5;
+  text-align:center;
+  padding:0 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="vertical-menu">
+  <video src="video_menu.mp4" autoplay muted loop></video>
+
+  <div class="counter-box">
+    <h3>عدد زوار الموقع</h3>
+    <p id="visitorCount">4855</p>
+  </div>
+
+  <div class="counter-box">
+    <h3>تقييم الموقع</h3>
+    <p id="videoRating">4084</p>
+  </div>
+
+  <div class="counter-box whatsapp-box">
+    <a href="https://wa.me/01212843252" target="_blank">تواصل مع المطور (واتساب)</a>
+  </div>
+
+  <div class="developer-text">
+    مصدر المعرفة في العالم الرقمي – اكتشف الأدوات وتعلم تقنيات الهكر الأخلاقي والأمن السيبراني.<br>
+    أكبر مجتمع تقني، تعرف علينا..!
+  </div>
+</div>
+
+<script>
+// عداد الزوار (يزيد 2 كل 2 ثانية)
+let visitorCount = document.getElementById( visitorCount );
+let visitorValue = parseInt(visitorCount.textContent);
+setInterval(() => {
+  visitorValue += 2;
+  visitorCount.textContent = visitorValue;
+}, 2000);
+
+// تقييم الفيديو (يزيد 3 كل نصف ساعة)
+let videoRating = document.getElementById( videoRating );
+let ratingValue = parseInt(videoRating.textContent);
+setInterval(() => {
+  ratingValue += 3;
+  videoRating.textContent = ratingValue;
+}, 1800000); // 1800000ms = 30 دقيقة
+</script>
+
+</body>
+</html>
+width:100%;
   background:#111;
   padding:15px 0;
   text-align:center;
